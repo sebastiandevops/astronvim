@@ -45,4 +45,8 @@ return {
       checker = false, -- Disable if you don't want health checks to run
     }
   end,
+  keys = {
+    -- redirect the active cmdline when pressing <S-Enter>.
+    { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
+  }
 }
