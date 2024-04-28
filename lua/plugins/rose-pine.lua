@@ -4,6 +4,7 @@ return {
   opts = function(_, opts)
     opts.variant = "auto"
     opts.styles = {
+      italic = false,
       transparency = true
     }
   end
