@@ -77,25 +77,9 @@ return {
           end,
           desc = 'Search & Replace'
         },
-        -- Delete ending whitespace
-        ["ge"] = {
-          function()
-            -- Save the current cursor position
-            local current_position = vim.fn.getpos(".")
-            -- Store the last search pattern
-            local reg = vim.fn.getreg("/")
-            -- Perform the whitespace removal using a global substitute command
-            vim.cmd("%s/\\s*$//g")
-            -- Restore the search pattern
-            vim.fn.setreg("/", reg)
-            -- Restore the cursor position
-            vim.fn.setpos(".", current_position)
-          end,
-          desc = "Delete ending whitespace"
-          },
-          -- move lines up and down
-          ["<A-j>"] = {":m .+1<CR>==", desc = "Move line down"},
-          ["<A-k>"] = {":m .-2<CR>==", desc = "Move line up"},
+        -- move lines up and down
+        ["<A-j>"] = {":m .+1<CR>==", desc = "Move line down"},
+        ["<A-k>"] = {":m .-2<CR>==", desc = "Move line up"},
       },
       t = {
         -- setting a mapping to false will disable it

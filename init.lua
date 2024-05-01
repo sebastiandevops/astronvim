@@ -21,3 +21,7 @@ end
 
 require "lazy_setup"
 require "polish"
+
+-- User modules
+require "user.keymaps"
+require "user.options"

@@ -1,5 +1,27 @@
---- [TODO: Figure out the system Python for Neovim]
 local M = {}
+
+-- Define the function to execute CopilotChat with an argument
+function M.copilot_chat_with_text(text)
+    -- Escape single quotes in the text argument
+    text = text:gsub("'", "'\\''")
+    -- Execute the CopilotChat command with the provided text
+    vim.cmd("CopilotChat '" .. text .. "'")
+end
+
+-- Function to delete trailing white spaces in the entire document
+function M.DeleteEndingWhiteSpace()
+    -- Save the current cursor position
+    local current_position = vim.fn.getpos(".")
+    -- Store the last search pattern
+    local reg = vim.fn.getreg("/")
+    -- Perform the whitespace removal using a global substitute command
+    vim.cmd("%s/\\s*$//g")
+    -- Restore the search pattern
+    vim.fn.setreg("/", reg)
+    -- Restore the cursor position
+    vim.fn.setpos(".", current_position)
+end
+
 --- Executes a command and returns its output.
 --
 -- @param command The command to execute.
