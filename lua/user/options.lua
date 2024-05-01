@@ -6,3 +6,6 @@ set.list = true  -- Enable display of special characters
 
 -- Configure display of special characters:
 set.listchars = { tab = '»·', trail = '·', extends = '→', precedes = '←' }
+
+-- Enable formatting concealment features
+set.conceallevel = 2
