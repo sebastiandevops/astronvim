@@ -29,6 +29,20 @@ return {
           StatusLine = {
             bg = "none"
           },
+          -- Group colors for NeoTree window border
+          WinSeparator = {
+            fg = "#282828"
+          },
+          -- Group colors for NeoTree inactive tab
+          TabLine = {
+            bg = "none",
+            fg = "#736a99"
+          },
+          -- Group colors for NeoTree selected tab
+          TabLineSel = {
+            bg = "none",
+            bold = true,
+          }
         }
       end
     end
