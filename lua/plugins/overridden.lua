@@ -28,7 +28,20 @@ return {
       end
       local heirline_components = require "heirline-components.all"
       local fileformat = function()
-        local fmt = heirline_components.component.file_encoding({ file_encoding = false, file_format = { padding = { left = 2, right = 0 } }})
+        local fmt = heirline_components.component.file_encoding({
+          file_encoding = {
+            padding = {
+              left = 1,
+              right = 0
+            }
+          },
+          file_format = {
+            padding = {
+              left = 2,
+              right = 0
+            }
+          }
+        })
         return fmt
       end
       insert_at(opts.statusline, 10, {
