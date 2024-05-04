@@ -31,7 +31,7 @@ return {
           },
           -- Group colors for NeoTree window border
           WinSeparator = {
-            fg = "#282828"
+            fg = "none"
           },
           -- Group colors for NeoTree inactive tab
           TabLine = {

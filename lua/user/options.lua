@@ -9,3 +9,6 @@ set.listchars = { tab = '»·', trail = '·', extends = '→', precedes = '←' 
 
 -- Enable formatting concealment features
 set.conceallevel = 2
+
+-- Set the fill characters for end of buffer and vertical split to be a space
+set.fillchars = { eob = " ", vert = " " }
