@@ -44,7 +44,7 @@ return {
         })
         return fmt
       end
-      insert_at(opts.statusline, 10, {
+      insert_at(opts.statusline, 12, {
         fileformat(),
       })
     end,
