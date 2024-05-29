@@ -42,7 +42,11 @@ return {
           TabLineSel = {
             bg = "none",
             bold = true,
-          }
+          },
+          Visual = {
+            bg = "#fffacd",
+            fg = "#16161D"
+          },
         }
       end
     end
