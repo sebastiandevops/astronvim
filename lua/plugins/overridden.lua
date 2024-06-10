@@ -40,7 +40,14 @@ return {
       insert_at(opts.statusline, 12, {
         fileformat(),
       })
-      opts.statusline[1] = status.component.mode { mode_text = { padding = { left = 1, right = 1 } } } -- add the mode text
+      opts.statusline[1] = status.component.mode {
+        mode_text = {
+          padding = {
+            left = 1,
+            right = 1
+          }
+        }
+      } -- add the mode text
     end,
   },
 }
