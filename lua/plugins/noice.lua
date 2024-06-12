@@ -14,12 +14,12 @@ return {
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
       },
-      signature = {
-        enabled = false,
-      },
-      hover = {
-        enabled = false,
-      },
+      -- signature = {
+      --   enabled = false,
+      -- },
+      -- hover = {
+      --   enabled = false,
+      -- },
       progress = {
         enabled = false,
       },
@@ -31,16 +31,16 @@ return {
       long_message_to_split = true, -- long messages will be sent to a split
       lsp_doc_border = true, -- add a border to hover docs and signature help
     }
-    opts.messages = {
-      -- NOTE: If you enable messages, then the cmdline is enabled automatically.
-      -- This is a current Neovim limitation.
-      enabled = true, -- enables the Noice messages UI
-      view = "notify", -- default view for messages
-      view_error = "notify", -- view for errors
-      view_warn = "notify", -- view for warnings
-      view_history = "messages", -- view for :messages
-      view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
-    }
+    -- opts.messages = {
+    --   -- NOTE: If you enable messages, then the cmdline is enabled automatically.
+    --   -- This is a current Neovim limitation.
+    --   enabled = true, -- enables the Noice messages UI
+    --   view = "notify", -- default view for messages
+    --   view_error = "notify", -- view for errors
+    --   view_warn = "notify", -- view for warnings
+    --   view_history = "messages", -- view for :messages
+    --   view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
+    -- }
     opts.health = {
       checker = false, -- Disable if you don't want health checks to run
     }
