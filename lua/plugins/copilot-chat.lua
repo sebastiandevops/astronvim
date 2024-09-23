@@ -1,3 +1,5 @@
+local IS_DEV = false
+
 local prompts = {
   -- Code related prompts
   Explain = "Please explain how the following code works.",
@@ -18,10 +20,27 @@ local prompts = {
 }
 
 return {
+  { import = "plugins.copilot" }, -- Or use { import = "lazyvim.plugins.extras.coding.copilot" },
   {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      spec = {
+        { "<leader>a", group = "ai" },
+        { "gm", group = "+Copilot chat" },
+        { "gmh", desc = "Show help" },
+        { "gmd", desc = "Show diff" },
+        { "gmp", desc = "Show system prompt" },
+        { "gms", desc = "Show selection" },
+        { "gmy", desc = "Yank diff" },
+      },
+    },
+  },
+  {
+    dir = IS_DEV and "~/Projects/research/CopilotChat.nvim" or nil,
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
-    -- branch = "canary", -- Use the canary branch if you want to test the latest features but it might be unstable
+    branch = "canary", -- Use the canary branch if you want to test the latest features but it might be unstable
+    -- version = "v2.11.0",
     -- Do not use branch and version together, either use branch or version
     dependencies = {
       { "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
@@ -31,14 +50,9 @@ return {
       question_header = "## User ",
       answer_header = "## Copilot ",
       error_header = "## Error ",
-      separator = " ", -- Separator to use in chat
       prompts = prompts,
       auto_follow_cursor = false, -- Don't follow the cursor after getting response
       show_help = false, -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
-      window = {
-        width = 0.4,
-        height = 0.4,
-      },
       mappings = {
         -- Use tab for completion
         complete = {
@@ -52,8 +66,8 @@ return {
         },
         -- Reset the chat buffer
         reset = {
-          normal = "<C-l>",
-          insert = "<C-l>",
+          normal = "<C-x>",
+          insert = "<C-x>",
         },
         -- Submit the prompt to Copilot
         submit_prompt = {
@@ -81,6 +95,10 @@ return {
         show_user_selection = {
           normal = "gms",
         },
+        -- Show help
+        show_help = {
+          normal = "gmh",
+        },
       },
     },
     config = function(_, opts)
@@ -102,6 +120,8 @@ return {
       }
 
       chat.setup(opts)
+      -- Setup the CMP integration
+      require("CopilotChat.integrations.cmp").setup()
 
       vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
         chat.ask(args.args, { selection = select.visual })
@@ -139,18 +159,6 @@ return {
             vim.bo.filetype = "markdown"
           end
         end,
-      })
-
-      -- Add which-key mappings
-      local wk = require("which-key")
-      wk.add({
-        {
-          { "gm", group = "Copilot Chat" },
-          { "gmd", desc = "Show diff" },
-          { "gmp", desc = "System prompt" },
-          { "gms", desc = "Show selection" },
-          { "gmy", desc = "Yank diff" },
-        }
       })
     end,
     event = "VeryLazy",
@@ -239,6 +247,8 @@ return {
       { "<leader>al", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
       -- Toggle Copilot Chat Vsplit
       { "<leader>av", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
+      -- Copilot Chat Models
+      { "<leader>a?", "<cmd>CopilotChatModels<cr>", desc = "CopilotChat - Select Models" },
     },
   },
 }
