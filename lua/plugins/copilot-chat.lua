@@ -121,7 +121,8 @@ return {
 
       chat.setup(opts)
       -- Setup the CMP integration
-      require("CopilotChat.integrations.cmp").setup()
+      -- require("CopilotChat.integrations.cmp").setup()
+      opts.chat_autocomplete = true
 
       vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
         chat.ask(args.args, { selection = select.visual })
